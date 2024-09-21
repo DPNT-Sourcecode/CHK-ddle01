@@ -53,5 +53,3 @@ def checkout(skus):
     return res
 
 print(checkout("AAAA"))
-
-
