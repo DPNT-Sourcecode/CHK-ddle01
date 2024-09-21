@@ -5,7 +5,7 @@
 def checkout(skus):
     if skus == "":
         return 0
-    
+    indexA = 65
     indexs = {
         "A":0,
         "B":1,
@@ -57,4 +57,6 @@ def checkout(skus):
         res += count[index] * prices[index]
     return res
 
-print(checkout("FFFFFF"))
+
+
+print(ord("B"))
