@@ -11,9 +11,10 @@ def checkout(skus):
         "B":1,
         "C":2,
         "D":3,
+        "E":4
     }
-    count = [0,0,0,0]
-    prices = [50,30,20,15]
+    count = [0,0,0,0,0]
+    prices = [50,30,20,15,40]
 
     res = 0
     for sku in skus:
@@ -37,6 +38,4 @@ def checkout(skus):
     for index in range(len(count)):
         res += count[index] * prices[index]
     return res
-
-print(checkout("AAAAA"))
 
