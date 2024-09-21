@@ -25,12 +25,13 @@ def checkout(skus):
     print(count)
     # Checking for offers, reducing count if offer found
     
-    #Offer for A
+    #Offers for A
     if count[0] >= 5:
         offersA = count[0] // 5
         res += offersA * 200
         count[0] = count[0] % 5
-        
+    
+    if count[0] >= 3:
         offersA = count[0] // 3
         res += offersA * 130
         count[0] = count[0] % 3
@@ -50,5 +51,7 @@ def checkout(skus):
     for index in range(len(count)):
         res += count[index] * prices[index]
     return res
+
+print(checkout("AAAA"))
 
 
