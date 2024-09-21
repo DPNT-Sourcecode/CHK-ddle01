@@ -12,7 +12,7 @@ def checkout(skus):
     for i in range(65,91):
         count.append(0)
     
-    prices = [50,30,20,15,40,10,20,10,35,60,80,90,15,40,10,50,30,50,30,20,40,50,20,90,10,50]
+    prices = [50,30,20,15,40,10,20,10,35,60,70,90,15,40,10,50,30,50,20,20,40,50,20,17,20,21]
 
     res = 0
     for sku in skus:
@@ -22,10 +22,10 @@ def checkout(skus):
     
     # Checking for free items
     applyFreeOffer(count,ord("E"),ord("B"),2)
-    applyFreeOffer(count,ord("F"),ord("F"),3)
+    applyFreeOffer(count,ord("F"),ord("F"),2)
     applyFreeOffer(count,ord("N"),ord("M"),3)
     applyFreeOffer(count,ord("R"),ord("Q"),3)
-    applyFreeOffer(count,ord("U"),ord("U"),4)
+    applyFreeOffer(count,ord("U"),ord("U"),3)
 
     # Checking for offers, reducing count if offer found
     res += applyDiscount(count,ord("A"),5,200)
@@ -33,7 +33,7 @@ def checkout(skus):
     res += applyDiscount(count,ord("B"),2,45)
     res += applyDiscount(count,ord("H"),10,80)
     res += applyDiscount(count,ord("H"),5,45)
-    res += applyDiscount(count,ord("K"),2,150)
+    res += applyDiscount(count,ord("K"),2,120)
     res += applyDiscount(count,ord("P"),5,200)
     res += applyDiscount(count,ord("Q"),3,80)
     res += applyDiscount(count,ord("V"),3,130)
@@ -60,6 +60,8 @@ def applyFreeOffer(count,index1,index2,quantity):
     valueA = 65
     index1 = index1 - valueA
     index2 = index2 - valueA
+    if index1 == index2:
+        quantity += 1
     if count[index1] >= quantity:
         freeItems = count[index1] // quantity
         count[index2] = max(0,count[index2] - freeItems)
