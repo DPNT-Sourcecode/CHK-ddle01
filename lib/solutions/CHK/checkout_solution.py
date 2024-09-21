@@ -12,9 +12,10 @@ def checkout(skus):
         "C":2,
         "D":3,
         "E":4,
+        "F":5,
     }
-    count = [0,0,0,0,0]
-    prices = [50,30,20,15,40]
+    count = [0,0,0,0,0,0]
+    prices = [50,30,20,15,40,10]
 
     res = 0
     for sku in skus:
@@ -22,7 +23,6 @@ def checkout(skus):
             return -1
         count[indexs[sku]] += 1
 
-    print(count)
     # Checking for offers, reducing count if offer found
     
     #Offers for A
@@ -47,9 +47,14 @@ def checkout(skus):
         res += offersB * 45
         count[1] = count[1] % 2
 
+    #Offer for F
+    if count[5] >= 3:
+        offersF = count[5] // 3
+        count[5] = count[5] - offersF
+
     # adding the remaining non-offer itemss
     for index in range(len(count)):
         res += count[index] * prices[index]
     return res
 
-print(checkout("AAAA"))
+print(checkout("FFFFF"))
