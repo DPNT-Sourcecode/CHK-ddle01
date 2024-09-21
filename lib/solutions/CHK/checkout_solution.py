@@ -22,16 +22,9 @@ def checkout(skus):
 
     # Checking for offers, reducing count if offer found
     
-    #Offers for A
-    if count[0] >= 5:
-        offersA = count[0] // 5
-        res += offersA * 200
-        count[0] = count[0] % 5
-    
-    if count[0] >= 3:
-        offersA = count[0] // 3
-        res += offersA * 130
-        count[0] = count[0] % 3
+    res += applyDiscount(count,ord("A"),5,200)
+    res += applyDiscount(count,ord("A"),3,130)
+    res += applyDiscount(count,ord("B"),2,45)
 
     #Offer for E
     if count[4] >= 2:
@@ -54,6 +47,13 @@ def checkout(skus):
         res += count[index] * prices[index]
     return res
 
+def applyDiscount(count,index,quantity,price):
+    if count[index] >= quantity:
+        offersA = count[index] // quantity
+        curr = offersA * price
+        count[index] = count[index] % quantity
+
+    return curr
 
 
-print(ord("Z"))
+print(checkout("AA"))
