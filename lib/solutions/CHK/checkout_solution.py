@@ -20,11 +20,18 @@ def checkout(skus):
             return -1
         count[ord(sku)-valueA] += 1
 
+
     # Checking for offers, reducing count if offer found
-    
     res += applyDiscount(count,ord("A"),5,200)
     res += applyDiscount(count,ord("A"),3,130)
     res += applyDiscount(count,ord("B"),2,45)
+    res += applyDiscount(count,ord("H"),10,80)
+    res += applyDiscount(count,ord("H"),5,45)
+    res += applyDiscount(count,ord("K"),2,150)
+    res += applyDiscount(count,ord("P"),5,200)
+    res += applyDiscount(count,ord("Q"),3,80)
+    res += applyDiscount(count,ord("V"),3,130)
+    res += applyDiscount(count,ord("V"),2,90)
 
     #Offer for E
     if count[4] >= 2:
