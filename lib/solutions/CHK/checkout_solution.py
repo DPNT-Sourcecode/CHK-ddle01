@@ -57,4 +57,4 @@ def checkout(skus):
         res += count[index] * prices[index]
     return res
 
-print(checkout("FFFFF"))
+print(checkout("FFFFFF"))
