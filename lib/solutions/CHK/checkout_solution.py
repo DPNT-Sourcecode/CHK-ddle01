@@ -4,7 +4,7 @@
 # skus = unicode string
 def checkout(skus):
     if skus == "":
-        return -1
+        return 0
     
     indexs = {
         "A":0,
@@ -21,18 +21,22 @@ def checkout(skus):
             return -1
         count[indexs[sku]] += 1
 
+    print(count)
     # Checking for offers, reducing count if offer found
     if count[0] > 2:
-        offersA = count[0] % 3
+        offersA = count[0] // 3
+        print(offersA)
         res += offersA * 130
-        count[0] = count[0] // 3
+        count[0] = count[0] % 3
     if count[1] > 1:
-        offersB = count[1] % 2
+        offersB = count[1] // 2
         res += offersB * 45
-        count[1] = count[1] // 2
+        count[1] = count[1] % 2
 
     # adding the remaining non-offer itemss
     for index in range(len(count)):
         res += count[index] * prices[index]
     return res
+
+print(checkout("AAAAA"))
 
