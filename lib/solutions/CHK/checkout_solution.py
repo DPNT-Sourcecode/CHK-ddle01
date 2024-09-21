@@ -5,17 +5,12 @@
 def checkout(skus):
     if skus == "":
         return 0
-    indexA = 65
-    indexs = {
-        "A":0,
-        "B":1,
-        "C":2,
-        "D":3,
-        "E":4,
-        "F":5,
-    }
-    count = [0,0,0,0,0,0]
-    prices = [50,30,20,15,40,10]
+    #ord("A") = 65
+
+    count = []
+    for i in range(65,91):
+        count.append(0)
+    prices = [50,30,20,15,40,10,20,10,35,60,80,90,15,40,10,50,30,50,30,20,40,50,20,90,10,50]
 
     res = 0
     for sku in skus:
@@ -59,4 +54,4 @@ def checkout(skus):
 
 
 
-print(ord("B"))
+print(ord("Z"))
