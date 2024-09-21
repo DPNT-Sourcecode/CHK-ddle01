@@ -19,9 +19,16 @@ def checkout(skus):
         if ord(sku) < 65 or ord(sku) > 90:
             return -1
         count[ord(sku)-valueA] += 1
-
+    
+    print(count)
     # Checking for free items
     applyFreeOffer(count,ord("E"),ord("B"),2)
+    applyFreeOffer(count,ord("F"),ord("F"),3)
+    applyFreeOffer(count,ord("E"),ord("B"),2)
+    applyFreeOffer(count,ord("E"),ord("B"),2)
+    applyFreeOffer(count,ord("E"),ord("B"),2)
+    applyFreeOffer(count,ord("E"),ord("B"),2)
+    print(count)
 
 
     # Checking for offers, reducing count if offer found
@@ -35,16 +42,6 @@ def checkout(skus):
     res += applyDiscount(count,ord("Q"),3,80)
     res += applyDiscount(count,ord("V"),3,130)
     res += applyDiscount(count,ord("V"),2,90)
-
-    #Offer for E
-    if count[4] >= 2:
-        offersE = count[4] // 2
-        count[1] = max(0, count[1] - offersE)
-
-    #Offer for F
-    if count[5] >= 3:
-        offersF = count[5] // 3
-        count[5] = count[5] - offersF
 
     # adding the remaining non-offer itemss
     for index in range(len(count)):
@@ -71,4 +68,4 @@ def applyFreeOffer(count,index1,index2,quantity):
         freeItems = count[index1] // quantity
         count[index2] = max(0,count[index2] - freeItems)
 
-print(checkout("EEBBB"))
+print(checkout("FFFFF"))
