@@ -19,6 +19,8 @@ def checkout(skus):
         if ord(sku) < 65 or ord(sku) > 90:
             return -1
         count[ord(sku)-valueA] += 1
+
+    res += applyThreeCheapOffer(count)
     
     # Checking for free items
     applyFreeOffer(count,ord("E"),ord("B"),2)
@@ -65,3 +67,25 @@ def applyFreeOffer(count,index1,index2,quantity):
     if count[index1] >= quantity:
         freeItems = count[index1] // quantity
         count[index2] = max(0,count[index2] - freeItems)
+
+def applyThreeCheapOffer(count):
+    valueA = 65
+    values = ["Z","Y","S","T","X"]
+    curr = []
+    res = 0
+    for item in values:
+        frequency = count[ord(item)-valueA]
+        for i in range(frequency):
+            curr.append(item)
+        count[ord(item)-valueA] = 0
+
+    while len(curr) >= 3:
+        curr.pop(0)
+        curr.pop(0)
+        curr.pop(0)
+        res += 45
+
+    for item in curr:
+        count[ord(item)-valueA] += 1
+    
+    return res
