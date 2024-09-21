@@ -5,24 +5,33 @@
 def checkout(skus):
     if skus == "":
         return -1
-    prices = {
-        "A":50,
-        "B":30,
-        "C":20,
-        "D":15
+    
+    indexs = {
+        "A":0,
+        "B":1,
+        "C":2,
+        "D":3,
     }
     count = [0,0,0,0]
+    prices = [50,30,20,15]
+
     res = 0
     for sku in skus:
-        if sku == "A":
-            count[0] += 1
-        elif sku == "B":
-            count[1] += 1
-        elif sku == "C":
-            count[2] += 1
-        elif sku == "D":
-            count[3] += 1
+        count[indexs[sku]] += 1
+
+    if count[0] > 2:
+        offersA = count[0] % 3
+        res += offersA * 130
+        count[0] = count[0] // 3
+    if count[1] > 1:
+        offersB = count[1] % 2
+        res += offersB * 45
+        count[1] = count[1] // 2
+
+    for index in range(len(count)):
+        res += count[index] * prices[index]
     return -1
+
 
 
 
