@@ -48,6 +48,10 @@ def checkout(skus):
     return res
 
 def applyDiscount(count,index,quantity,price):
+    valueA = 65
+    index = index - valueA
+    curr = 0
+
     if count[index] >= quantity:
         offersA = count[index] // quantity
         curr = offersA * price
@@ -56,4 +60,4 @@ def applyDiscount(count,index,quantity,price):
     return curr
 
 
-print(checkout("AA"))
+print(checkout("AAAAAAAAAAZ"))
