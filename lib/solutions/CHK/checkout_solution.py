@@ -17,6 +17,8 @@ def checkout(skus):
 
     res = 0
     for sku in skus:
+        if sku not in indexs.keys():
+            return -1
         count[indexs[sku]] += 1
 
     # Checking for offers, reducing count if offer found
@@ -32,4 +34,5 @@ def checkout(skus):
     # adding the remaining non-offer itemss
     for index in range(len(count)):
         res += count[index] * prices[index]
-    return -1
+    return res
+
